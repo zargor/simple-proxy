@@ -1,5 +1,8 @@
 FROM registry.access.redhat.com/rhel7:latest
 
-RUN yum install -y yum-utils createrepo
-
-CMD sleep 20m
+RUN yum clean all \
+    && yum -y update \
+    && yum -y install httpd \
+    && yum install -y yum-utils createrepo
+    
+CMD systemctl start httpd
