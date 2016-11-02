@@ -5,6 +5,4 @@ RUN yum clean all \
     && yum -y install httpd \
     && yum install -y yum-utils createrepo
 
-RUN systemctl start httpd
-
-CMD sleep 20m
+CMD ["httpd", "-DFOREGROUND"]
